@@ -1,0 +1,128 @@
+{% include 'admin_header.html' %}
+
+
+
+<style type="text/css">
+	th
+	{
+		background-color: black;
+		color: white;
+	}
+	td
+	{
+
+		color: white;
+	}
+	h1{
+
+		margin-top: 150px;	
+	}
+	/*tr:hover
+	{
+		opacity: 0.3;
+		background-color: grey;
+	}*/
+
+
+</style>
+
+
+ <!-- Header -->
+    <header id="header" style="background-image: url(/static/images/6.jpg);height: auto;background-attachment: fixed;">
+        <div class="header-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-container">
+                            <form method="post">
+
+<center>
+	<h1 style="color: #fff;background-color: black;opacity: 0.8">FEEDBACK</h1>
+	<table>
+		<tr>
+			<td>
+				<table class="table" align="left" style="background-color: #566D7E;width: 480px;">
+					<h2 style="background-color: #737CA1;color: #fff;">User Feedback</h2>
+					<tr>
+						<th>SNO</th>
+						<th>USERNAME</th>
+						<th>FEEDBACK</th>
+						<th>DATE</th>
+					</tr>
+
+					{% for row in data['user_feedbacks'] %}
+
+					<tr>
+						<td>{{ loop.index }}</td>
+						<td>{{ row['first_name'] }}</td>
+						<td>{{ row['feedback'] }}</td>
+						<td>{{ row['date_time'] }}</td>
+					</tr>
+
+					{% endfor %}
+
+				</table>
+		</td>
+		<td>
+			<table class="table" align="right" style="margin-left: 100px; background-color: #737CA1;width: 480px;">
+				<h2 style="margin-left: 100px;background-color: #566D7E;color: #fff;">Police Feedback</h2>
+				<tr>
+					<th>SNO</th>
+					<th>USERNAME</th>
+					<th>FEEDBACK</th>
+					<th>DATE</th>
+				</tr>
+
+				{% for row in data['police_feedbacks'] %}
+
+				<tr>
+					<td>{{ loop.index }}</td>
+					<td>{{ row['first_name'] }}</td>
+					<td>{{ row['feedback'] }}</td>
+					<td>{{ row['date_time'] }}</td>
+				</tr>
+
+				{% endfor %}
+
+			</table>
+
+
+		</td>
+		</tr>
+	</table>
+</center>
+
+
+</form>
+
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+
+
+
+
+
+
+                     </div>
+                    </div> <!-- end of col -->
+                </div> <!-- end of row -->
+            </div> <!-- end of container -->
+        </div> <!-- end of header-content -->
+    </header> <!-- end of header -->
+    <!-- end of header -->
+
+
+{% include 'footer.html' %}

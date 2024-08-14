@@ -1,0 +1,49 @@
+{% include 'authority_header.html' %}
+
+{% include 'temp_header.html' %}
+
+<center>
+	<h1 style="color: white; background-color: black;">POLICE OFFICERS</h1>
+	<table class="table" style="width: 600px;">
+		<tr>
+			<th>SNO</th>
+			<th>POLICE NAME</th>
+			<th>STATION NAME</th>
+			<th>PLACE</th>
+			<th>PHONE</th>
+			
+			<th>CONNECT</th>
+		</tr>
+
+		{% for row in data['police'] %}
+
+		<tr>
+			<td>{{ loop.index }}</td>
+			<td>{{ row['first_name'] }}</td>
+			<td>{{ row['station_name'] }}</td>
+			<td>{{ row['place'] }}</td>
+			<td>{{ row['phone'] }}</td>
+			<td><a href="?action=assign&pid={{ row['police_id'] }}&crid={{ data['crid'] }}" class="btn btn-primary">assign</a></td>
+			
+		</tr>
+
+		{% endfor %}
+		
+	</table>
+</center>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br>
+
+{% include 'temp_footer.html' %}
+
+
+
+{% include 'footer.html' %}

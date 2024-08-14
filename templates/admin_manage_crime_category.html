@@ -1,0 +1,154 @@
+{% include 'admin_header.html' %}
+
+
+
+
+{% include 'admin_header.html' %}
+
+
+
+
+
+{% include 'admin_header.html' %}
+
+
+
+
+
+
+
+<style type="text/css">
+	th
+	{
+		background-color: black;
+		color: white;
+	}
+	td
+	{
+		color: black;
+	}
+	h1{
+
+		margin-top: 150px;	
+	}
+	tr:hover
+	{
+		/*opacity: 0.5;
+		background-color: grey;*/
+	}
+	table
+	{
+		opacity: 0.8;
+		background-color: grey;
+	}
+</style>
+
+
+ <!-- Header -->
+    <header id="header" style="background-image: url(/static/images/1212.jpg);height: auto;background-attachment: fixed;">
+        <div class="header-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-container">
+                            <form method="post">
+	<center>
+
+
+<form method="post">
+<form method="post">
+
+	<center>
+
+		{% if data['upcat'] %}
+
+		<h1 style="color: black; background-color: white;">UPDATE CRIME CATEGORY</h1>
+		<table class="table" width="600">
+			<tr>
+				<th>Category name</th>
+				<td><input type="text" required=""  class="form-control" name="cname" value="{{ data['upcat'][0]['category_name'] }}"></td>
+			</tr>
+			<tr>
+				<th>Description</th>
+				<td><textarea name="description"  class="form-control" required="">{{ data['upcat'][0]['category_name'] }}</textarea></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" name="submits" value="update" class="btn btn-success"></td>
+			</tr>
+		</table>
+
+
+		{% else %}
+
+
+
+		<h1 style="color: white">MANAGE CRIME CATEGORY</h1>
+		<table class="table" width="600" >
+			<tr>
+				<th>Category name</th>
+				<td><input type="text" required=""  class="form-control" name="cname"></td>
+			</tr>
+			<tr>
+				<th>Description</th>
+				<td><textarea name="description" class="form-control" required=""></textarea></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" name="submit" value="add" class="btn btn-success"></td>
+			</tr>
+		</table>
+
+
+		{% endif %}
+
+
+
+		<br>
+		<br>
+		<h1>VIEW CATEGORIES</h1>
+		<table class="table" width="700">
+			<tr>
+				<th>S.NO</th>
+				<th>CATEGORY NAME</th>
+				<th>DESCRIPTION</th>
+
+			</tr>
+
+			{% for row in data['crime_categories'] %}
+
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ row['category_name'] }}</td>
+				<td>{{ row['description'] }}</td>
+				<td><a href="?action=update&cid={{ row['category_id'] }}" class="btn btn-success">update</a></td>
+				<td><a href="?action=delete&cid={{ row['category_id'] }}" class="btn btn-danger">delete</a></td>
+			</tr>
+
+			{% endfor %}
+
+		</table>
+	</center>
+	
+</form>
+>
+
+<br>
+<br>
+<br>
+
+
+
+
+
+
+                     </div>
+                    </div> <!-- end of col -->
+                </div> <!-- end of row -->
+            </div> <!-- end of container -->
+        </div> <!-- end of header-content -->
+    </header> <!-- end of header -->
+    <!-- end of header -->
+
+
+
+{% include 'footer.html' %}
+

@@ -1,0 +1,60 @@
+{% include 'police_header.html' %}
+{% include 'police_temp_header.html' %}
+
+  <header id="header" style="background-image: url(/static/images/alert.jpg);height: auto;background-attachment: fixed;">
+        <div class="header-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-container">
+                            <form method="post" enctype="multipart/form-data">
+                            	<style type="text/css">
+                            		h1
+                            		{
+                            			color: white;
+                            			background-color: black;
+                            		}
+                            	
+                            	</style>
+
+<form method="post">
+	<center>
+		<h1> SENT FEEDBACKS</h1>
+		<table class="table">
+			<tr>
+				<th>Feedback</th>
+				<td><input type="text" class="form-control" name="feedback"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" name="submit" class="btn btn-warning" value="sent"></td>
+			</tr>
+		</table>
+		<br>
+		<br>
+		<h1>FEEDBACKS</h1>
+		<table class="table">
+			<tr>
+				<th>Sno</th>
+				<th>Feedback</th>
+				<th>Date and time</th>
+			</tr>
+
+			{% for row in data['feedback'] %}
+
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ row['feedback'] }}</td>
+				<td>{{ row['date_time'] }}</td>
+			</tr>
+
+			{% endfor %}
+
+		</table>
+
+	</center>
+	
+
+</form>
+{% include 'temp_footer.html' %}
+
+{% include 'footer.html' %}

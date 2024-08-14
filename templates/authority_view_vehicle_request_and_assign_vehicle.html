@@ -1,0 +1,58 @@
+{% include 'authority_header.html' %}
+{% include 'temp_header.html' %}
+
+<center>
+	<h1 style="color: white; background-color: black;">ASSIGN VEHICLE</h1>
+	<table class="table">
+		<tr>
+			<th>Sno</th>
+			<th>POLICE NAME</th>
+			<th>VEHICLE COMPANY</th>
+			<th>MODEL</th>
+			<th>REASON</th>
+			<th>STATUS</th>
+		</tr>
+
+		{% for row in data['vehiclerequest'] %}
+
+		<tr>
+			<td>{{ loop.index }}</td>
+			<td>{{ row['police_name'] }}</td>
+			<td>{{ row['company'] }}</td>
+			<td>{{ row['model'] }}</td>
+			<td>{{ row['reason'] }}</td>
+
+			{% if row['status']=='assigned' %}
+
+			<td>{{ row['status'] }}</td>
+
+			{% else %}
+
+			<td><a href="?action=assign&rid={{ row['request_id'] }}&vid={{ row['vehicle_id'] }}">assign</a></td>
+
+			{% endif %}
+		</tr>
+
+		{% endfor %}
+
+	</table>
+</center>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+{% include 'temp_footer.html' %}
+
+{% include 'footer.html' %}

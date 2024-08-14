@@ -1,0 +1,249 @@
+{% include 'admin_header.html' %}
+
+
+
+
+
+{% include 'admin_header.html' %}
+
+
+
+
+<style type="text/css">
+	th
+	{
+		background-color: black;
+		color: white;
+	}
+	td
+	{
+		color: white;
+	}
+	h1{
+
+		margin-top: 150px;	
+	}
+	tr:hover
+	{
+/*		opacity: 0.5;
+*//*		background-color: grey;
+*/	}
+	table
+	{
+		opacity: 0.9;
+		background-color: black;
+	}
+</style>
+
+
+ <!-- Header -->
+    <header id="header" style="background-image: url(/static/images/2255.jpg);height: auto;background-attachment: fixed;">
+        <div class="header-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-container">
+                            <form method="post">
+	<center>
+
+
+<form method="post">
+	<center>
+
+<form method="post">
+
+	<center>
+
+		{% if data['uppol'] %}
+
+		<h1 style="color: white; background-color: black;">UPDATE POLICE</h1>
+		<table class="table" width="700">
+		<tr>
+
+			<th>Station name</th>
+
+			
+
+			<td>
+				<select name="sname" class="form-control">
+					{% for row in data['polstn'] %}
+					<option value="{{ row['station_id'] }}" >{{ row['station_name'] }}</option>
+					{% endfor %}
+				</select>
+			</td>
+
+			
+				
+		</tr>
+		<tr>
+			<th>First name</th>
+			<td><input type="text" required="" pattern="[a-zA-Z/s]+$" class="form-control" name="fname" value="{{ data['uppol'][0]['first_name'] }}"></td>
+		</tr>
+		<tr>
+			<th>Last name</th>
+			<td><input type="text" required="" class="form-control" name="lname" value="{{ data['uppol'][0]['last_name'] }}"></td>
+		</tr>
+		<tr>
+			<th>Age</th>
+			<td><input type="text" required="" class="form-control" name="age" value="{{ data['uppol'][0]['age'] }}"></td>
+		</tr>
+		<tr>
+			<th>Qualification</th>
+			<td><input type="text" required="" class="form-control" name="qualification" value="{{ data['uppol'][0]['qualification'] }}"></td>
+		</tr>
+		<tr>
+			<th>Year of join</th>
+			<td><input type="text" required=""  name="year" value="{{ data['uppol'][0]['year_of_join'] }}"></td>
+		</tr>
+		<tr>
+			<th>Phone</th>
+			<td><input type="text" required="" class="form-control" name="phone" value="{{ data['uppol'][0]['phone'] }}" pattern="[0-9]{10}"></td>
+		</tr>
+		<tr>
+			<th>Email</th>
+			<td><input type="email" required="" class="form-control" name="email" value="{{ data['uppol'][0]['email'] }}"></td>
+		</tr>
+
+		<tr>
+			<td colspan="2" align="center"><input type="submit" name="submits" value="update" class="btn btn-success"></td>
+		</tr>
+		</table>
+
+
+
+
+		{% else %}
+
+
+
+
+
+		<h1 style="color: white; background-color: black;">MANAGE POLICE</h1>
+		<table class="table" width="700">
+		<tr>
+
+			<th>Station name</th>
+
+			
+
+			<td>
+				<select name="sname" class="form-control">
+					{% for row in data['polstn'] %}
+					<option value="{{ row['station_id'] }}" >{{ row['station_name'] }}</option>
+					{% endfor %}
+				</select>
+			</td>
+
+			
+				
+		</tr>
+		<tr>
+			<th>First name</th>
+			<td><input type="text" class="form-control" required="" name="fname"></td>
+		</tr>
+		<tr>
+			<th>Last name</th>
+			<td><input type="text" class="form-control" required="" name="lname"></td>
+		</tr>
+		<tr>
+			<th>Age</th>
+			<td><input type="text" class="form-control" required="" name="age"></td>
+		</tr>
+		<tr>
+			<th>Qualification</th>
+			<td><input type="text" class="form-control" required="" name="qualification"></td>
+		</tr>
+		<tr>
+			<th>Year of join</th>
+			<td><input type="text" class="form-control" required="" name="year"></td>
+		</tr>
+		<tr>
+			<th>Phone</th>
+			<td><input type="text" class="form-control" required="" name="phone" pattern="[7-9]{1}[0-9]{9}"></td>
+		</tr>
+		<tr>
+			<th>Email</th>
+			<td><input type="email" class="form-control" required="" name="email"></td>
+		</tr>
+		<tr>
+			<th>Username</th>
+			<td><input type="text" class="form-control" required="" name="uname"  ></td>
+		</tr>
+		<tr>
+			<th>Password</th>
+			<td><input type="Password" class="form-control" name="pword"></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center"><input type="submit" name="submit" value="register" class="btn btn-success"></td>
+		</tr>
+		</table>
+
+
+
+
+		{% endif %}
+
+
+
+
+
+
+		<br>
+		<br>
+		<h1 style="color: white; background-color: black;">VIEW POLICE</h1>
+		<table class="table" width="700">
+		<tr>
+			<th>S.NO</th>
+			<th>FIRST NAME</th>
+			<th>LAST NAME</th>
+			<th>AGE</th>
+			<th>QUALIFICATION</th>
+			<th>YEAR OF JOIN</th>
+			<th>PHONE</th>
+			<th>EMAIL</th>
+		</tr>
+
+		{% for row in data['police'] %}
+
+		<tr>
+			<td>{{ loop.index }}</td>
+			<td>{{ row['first_name'] }}</td>
+			<td>{{ row['last_name'] }}</td>
+			<td>{{ row['age'] }}</td>
+			<td>{{ row['qualification'] }}</td>
+			<td>{{ row['year_of_join'] }}</td>
+			<td>{{ row['phone'] }}</td>
+			<td>{{ row['email'] }}</td>
+			<td><a href="?action=update&sid={{ row['station_id'] }}&pid={{ row['police_id'] }}" class="btn btn-success">update</a></td>
+			<td><a href="?action=delete&id={{ row['login_id'] }}&pid={{ row['police_id'] }}" class="btn btn-danger">delete</a></td>
+		</tr>
+
+		{% endfor %}
+
+		</table>
+			
+
+	</center>
+	
+</form>
+
+<br>
+<br>
+<br>
+
+
+
+
+
+
+                     </div>
+                    </div> <!-- end of col -->
+                </div> <!-- end of row -->
+            </div> <!-- end of container -->
+        </div> <!-- end of header-content -->
+    </header> <!-- end of header -->
+    <!-- end of header -->
+
+
+
+{% include 'footer.html' %}

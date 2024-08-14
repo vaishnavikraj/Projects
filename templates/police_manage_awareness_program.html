@@ -1,0 +1,121 @@
+{% include 'police_header.html' %}
+{% include 'police_temp_header.html' %}
+
+  <header id="header" style="background-image: url(/static/images/alert.jpg);height: auto;background-attachment: fixed;">
+        <div class="header-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-container">
+                            <form method="post" enctype="multipart/form-data">
+                            	<style type="text/css">
+                            		h1
+                            		{
+                            			color: white;
+                            			background-color: black;
+                            		}
+                            	
+                            	</style>
+
+<form method="post" enctype="multipart/form-data">
+	<center>  
+
+		{% if data['upawr'] %}
+
+
+			<h1>UPDATE AWARENESS PROGRAM</h1>
+		<table class="table">
+			<tr>
+				<th>Program title</th>
+				<td><input type="text" required="" class="form-control" name="title" value="{{ data['upawr'][0]['title'] }}"></td>
+			</tr>
+			<tr>
+				<th>Description</th>
+				<td><textarea required="" class="form-control" name="des">{{ data['upawr'][0]['description'] }}</textarea></td>
+			</tr>
+			<tr>
+				<th>File</th>
+				<td><input type="file" required="" class="form-control" name="file" value="{{ data['upawr'][0]['file'] }}"></td>
+			</tr>
+			<tr>
+				<th>Place</th>
+				<td><input type="text" required="" pattern="[a-zA-Z/s]{0-50}" title="enter valid format" class="form-control" name="place" value="{{ data['upawr'][0]['place'] }}"></td>
+			</tr>
+			<tr>
+				<th>Event date</th>
+				<td><input required="" class="form-control" type="datetime-local" name="date" value="{{ data['upawr'][0]['event_date_time'] }}"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" name="submit" value="add" class="btn btn-success"></td>
+			</tr>
+		</table>
+
+		{% else %}
+
+		<h1>ADD AWARENESS PROGRAM</h1>
+		<table class="table">
+			<tr>
+				<th>Program title</th>
+				<td><input type="text" required="" class="form-control" name="title"></td>
+			</tr>
+			<tr>
+				<th>Description</th>
+				<td><textarea name="des" required="" class="form-control"></textarea></td>
+			</tr>
+			<tr>
+				<th>File</th>
+				<td><input type="file" required="" class="form-control" name="file"></td>
+			</tr>
+			<tr>
+				<th>Place</th>
+				<td><input type="text" pattern="[a-zA-Z/s]{0-50}" title="enter valid format" required="" class="form-control" name="place"></td>
+			</tr>
+			<tr>
+				<th>Event date</th>
+				<td><input type="datetime-local" required="" class="form-control" name="date"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" name="submit" value="add" class="btn btn-success"></td>
+			</tr>
+		</table>
+
+		{% endif %}
+
+		<br>
+		<br>
+		<h1>AWARENESS PROGRAMMES</h1>
+		<table class="table">
+			<tr>
+				<th>Sno</th>
+				<th>Title</th>
+				<th>Description</th>
+				<th>File</th>
+				<th>Place</th>
+				<th>Event date time</th>
+			</tr>
+
+			{% for row in data['awareness'] %}
+
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ row['title'] }}</td>
+				<td>{{ row['description'] }}</td>
+				<td><img src="/{{ row['file'] }}" width="100" height="100"></td>
+				<td>{{ row['place'] }}</td>
+				<td>{{ row['event_date_time'] }}</td>
+				<td><a href="?action=update&aid={{ row['awareness_id'] }}" class="btn btn-success">update</a></td>
+				<td><a href="?action=delete&aid={{ row['awareness_id'] }}" class="btn btn-danger">delete</a></td>
+			</tr>
+
+			{% endfor %}
+
+		</table>
+	</center>
+</form>
+<br>
+<br>
+<br>
+
+{% include 'temp_footer.html' %}
+
+{% include 'footer.html' %}

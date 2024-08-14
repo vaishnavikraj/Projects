@@ -1,0 +1,68 @@
+
+{% include 'public_header.html' %}
+
+<style type="text/css">
+	th
+	{
+		background-color: grey;
+		color: white;
+	}
+	td
+	{
+		color: white;
+	}
+	tr:hover
+	{
+		background-color: black;
+	}
+</style>
+
+
+    <!-- Header -->
+    <header id="header" class="header">
+        <div class="header-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-container">
+                         
+				
+<center>
+	<h1>EMERGENCY CONTACTS</h1>
+	<table class="table">
+		<tr>
+			<th>Sno</th>
+			<th>Authority</th>
+			<th>Details</th>
+			<th>Number</th>
+		</tr>
+
+		{% for row in data['emergency'] %}
+
+		<tr>
+			<td>{{ loop.index }}</td>
+			<td>{{ row['authority'] }}</td>
+			<td>{{ row['details'] }}</td>
+			<td>{{ row['number'] }}</td>
+		</tr>
+
+		{% endfor %}
+
+	</table>
+</center>
+
+
+
+
+<!--                         </div>
+ -->                    </div> <!-- end of col -->
+                </div> <!-- end of row -->
+            </div> <!-- end of container -->
+        </div> <!-- end of header-content -->
+    </header> <!-- end of header -->
+    <!-- end of header -->
+
+
+
+
+{% include 'footer.html' %}

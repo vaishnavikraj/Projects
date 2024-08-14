@@ -1,0 +1,150 @@
+{% include 'admin_header.html' %}
+
+<style type="text/css">
+	th
+	{
+		background-color: grey;
+		color: black;
+	}
+	td
+	{
+		color: black;
+	}
+	h1{
+
+		margin-top: 150px;	
+	}
+	tr:hover
+	{
+		background-color: #2B3856;
+	}
+	table
+	{
+		background-color: #354260 ;
+	}
+</style>
+
+
+ <!-- Header -->
+    <header id="header" style="background-image: url(/static/images/7.jpg);height: auto;background-attachment: fixed;">
+        <div class="header-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-container">
+                            <form method="post">
+	<center>
+
+
+
+<form method="post">
+
+	<center>
+
+
+		{% if data['upcon'] %}
+
+
+
+		<h1 style="background-color: white; color: black;">UPDATE EMERGENCY CONTACTS</h1>
+		<table>
+			<tr>
+				<th>Authority</th>
+				<td><select name="authority" required="">
+					<option hidden="">choose</option>
+					{% for row in data['authorities'] %}
+					<option value="{{ row['authority_name'] }}">{{ row['authority_name'] }}</option>
+					{% endfor %}
+				</select></td>
+			</tr>
+			<tr>
+				<th>Details</th>
+				<td><textarea name="details" required="">{{ data['upcon'][0]['details'] }}</textarea></td>
+			</tr>
+			<tr>
+				<th>Number</th>
+				<td><input type="number" pattern="[0-9]" title="enter valid number" required="" name="number" value="{{ data['upcon'][0]['number'] }}"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" name="submits" value="update"class="btn btn-success"></td>
+			</tr>
+		</table>
+
+		{% else %}
+
+
+		<h1 style="background-color: white; color: black;">EMERGENCY CONTACTS</h1>
+		<table>
+			<tr>
+				<th>Authority</th>
+				<td><select name="authority" required="">
+					<option hidden="">choose</option>
+					{% for row in data['authorities'] %}
+					<option value="{{ row['authority_name'] }}">{{ row['authority_name'] }}</option>
+					{% endfor %}
+				</select></td>
+			</tr>
+			<tr>
+				<th>Details</th>
+				<td><textarea name="details" required=""></textarea></td>
+			</tr>
+			<tr>
+				<th>Number</th>
+				<td><input type="number" required="" pattern="[0-9]" title="enter valid number" name="number"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" name="submit" value="add" class="btn btn-success"></td>
+			</tr>
+		</table>
+
+		{% endif %}
+
+
+		<br>
+		<br>
+		<h1 style="background-color: white; color: black;">EMERGENCY CONTACTS</h1>
+		<table border="2">
+			<tr>
+				<th>SNo</th>
+				<th>AUTHORITY</th>
+				<th>DETAILS</th>
+				<th>NUMBER</th>
+			</tr>
+
+			{% for row in data['emergency'] %}
+
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ row['authority'] }}</td>
+				<td>{{ row['details'] }}</td>
+				<td>{{ row['number'] }}</td>
+				<td><a class="btn btn-info" href="?action=update&cid={{ row['contact_id'] }}">update</a></td>
+				<td><a class="btn btn-danger" href="?action=delete&cid={{ row['contact_id'] }}">delete</a></td>
+			</tr>
+
+			{% endfor %}
+
+		</table>
+	</center>
+	
+</form>
+<br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br>
+
+
+                     </div>
+                    </div> <!-- end of col -->
+                </div> <!-- end of row -->
+            </div> <!-- end of container -->
+        </div> <!-- end of header-content -->
+    </header> <!-- end of header -->
+    <!-- end of header -->
+
+
+{% include 'footer.html' %}

@@ -1,0 +1,128 @@
+
+
+
+
+
+{% include 'admin_header.html' %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+	th
+	{
+		background-color: black;
+		color: white;
+	}
+	td
+	{
+
+		color: white;
+	}
+	h1{
+
+		margin-top: 150px;	
+	}
+	tr:hover
+	{
+		opacity: 0.3;
+		background-color: grey;
+	}
+	table
+	{
+		opacity: 0.9;
+		background-color: black;
+	}
+
+</style>
+
+
+ <!-- Header -->
+    <header id="header" style="background-image: url(/static/images/alert.jpg);height: auto;background-attachment: fixed;">
+        <div class="header-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-container">
+                            <form method="post">
+	<center>
+
+
+
+
+
+
+
+
+<center>
+	<h1 style="color: white; background-color: black">CRIMINAL ALERT</h1>
+	<table class="table" style="width: 700px">
+		<tr>
+			<th>Sno</th>
+			<th>FINDER NAME</th>
+			<th>CRIMINAL NAME</th>
+			<th>CRIMINAL'S PHOTO</th>
+			<th>FOUND PLACE</th>
+			<th>STATUS</th>
+		</tr>
+
+		{% for row in data['criminal_alert'] %}
+
+		<tr>
+			<td>{{ loop.index }}</td>
+			<td>{{ row['user_name'] }}</td>
+			<td>{{ row['criminal_name'] }}</td>
+			<td><img src="{{ row['photo'] }}" width="100" height="100"></td>
+			<td>{{ row['found_place'] }}</td>
+			<td>{{ row['crime_status'] }}</td>
+		</tr>
+
+		{% endfor %}
+
+	</table>
+</center>
+
+
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+
+
+
+
+
+
+                     </div>
+                    </div> <!-- end of col -->
+                </div> <!-- end of row -->
+            </div> <!-- end of container -->
+        </div> <!-- end of header-content -->
+    </header> <!-- end of header -->
+    <!-- end of header -->
+
+{% include 'footer.html' %}
+
+
+

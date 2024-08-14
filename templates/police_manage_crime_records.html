@@ -1,0 +1,57 @@
+
+{% include 'police_header.html' %}
+{% include 'police_temp_header.html' %}
+
+  <header id="header" style="background-image: url(/static/images/alert.jpg);height: auto;background-attachment: fixed;">
+        <div class="header-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-container">
+                            <form method="post" enctype="multipart/form-data">
+                            	<style type="text/css">
+                            		h1
+                            		{
+                            			color: white;
+                            			background-color: black;
+                            		}
+                            	
+                            	</style>
+
+<form method="post" enctype="multipart/form-data">
+	<center>
+		<h1>CASE REGISTRATION</h1>
+		<table class="table">
+			{% for row in data['comp'] %}
+			<tr>
+				<th>User</th>
+
+				<td><input type="text" readonly="" name="user" value="{{ data['comp'][0]['username'] }}"></td>
+			</tr>
+			<tr>
+				<th>Complaint</th>
+				<td><input type="text" readonly="" name="complaint" value="{{ data['comp'][0]['title'] }}"></td>
+			</tr>
+			{% endfor %}
+			<tr>
+				<th>Title</th>
+				<td><input type="text" required="" class="form-control" name="titlee"></td>
+			</tr>
+			<tr>
+				<th>Description</th>
+				<td><input type="text" required="" class="form-control" name="des"></td>
+			</tr>
+			<tr>
+				<th>File</th>
+				<td><input type="file" required="" class="form-control" name="file"></td>
+			</tr>
+			<tr>
+				<td align="center"  colspan="2"><input type="submit" name="submit" value="file FIR" class="btn btn-success"></td>
+			</tr>
+		</table>
+	</center>
+
+</form>
+{% include 'temp_footer.html' %}
+
+{% include 'footer.html' %}

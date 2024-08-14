@@ -1,0 +1,94 @@
+{% include 'authority_header.html' %}
+
+{% include 'temp_header.html' %}
+
+<style type="text/css">
+	
+</style>
+
+<form method="post">
+
+	<center>
+
+		{% if data['upmeet'] %}
+
+		<h1 style="background-color: black; color: white;">UPDATE MEETING FOR A LOCAL BODY</h1>
+
+		<table class="table">
+			<tr>
+				<th>Local body</th>
+				<td><select name="localbody" class="form-control">
+					{% for row in data['localbody']  %}
+					<option value="{{ row['localbody_id']  }}">{{ row['name'] }}</option>
+					{% endfor %}
+					
+				</select></td>
+			</tr>
+			<tr>
+				<th>Meeting time</th>
+				<td><input type="datetime-local"  class="form-control" name="time" value="{{ data['upmeet'][0]['meet_date_time'] }}"></td>
+			</tr>
+			<tr>
+				<td align="right" colspan="2"><input type="submit" name="submits" value="update" class="btn btn-success" ></td>
+			</tr>
+		</table>
+
+
+		{% else %}
+
+
+		<h1 style="background-color: black; color: white;">MANAGE MEETING FOR A LOCAL BODY</h1>
+
+		<table class="table">
+			<tr>
+				<th>Local body</th>
+				<td><select name="localbody"  class="form-control">
+					{% for row in data['localbody']  %}
+					<option value="{{ row['localbody_id']  }}">{{ row['name'] }}</option>
+					{% endfor %}
+					
+				</select></td>
+			</tr>
+			<tr>
+				<th>Meeting time</th>
+				<td><input type="datetime-local"  class="form-control" name="time"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" name="submit" value="confirm" class="btn btn-success"></td>
+			</tr>
+		</table>
+
+
+		{% endif %}
+
+
+		<br>
+		<br>
+		<h1 style="background-color: black; color: white;">MEETINGS</h1>
+		<table class="table">
+			<tr>
+				<th>SNO</th>
+				<th>LOCALBODY NAME</th>
+				<th>MEETING DATE & TIME</th>
+			</tr>
+
+			{% for row in data['meetings'] %}
+
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ row['name'] }}</td>
+				<td>{{ row['meet_date_time'] }}</td>
+				<td><a href="?action=update&mid={{ row['meeting_id'] }}" class="btn btn-success">edit</a></td>
+				<td><a href="?action=delete&mid={{ row['meeting_id'] }}" class="btn btn-danger">delete</a></td>
+			</tr>
+
+			{% endfor %}
+
+		</table>
+	</center>
+	
+</form>
+
+{% include 'temp_footer.html' %}
+
+{% include 'footer.html' %}

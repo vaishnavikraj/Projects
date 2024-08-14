@@ -1,0 +1,221 @@
+
+
+
+
+
+{% include 'admin_header.html' %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+	th
+	{
+		background-color: black;
+		color: white;
+	}
+	td
+	{
+
+		color: white;
+	}
+	h1{
+
+		margin-top: 150px;	
+	}
+	tr:hover
+	{
+		/*opacity: 0.3;
+		background-color: white;*/
+	}
+	table
+	{
+		opacity: 0.9;
+		background-color: black;
+	}
+
+</style>
+
+
+ <!-- Header -->
+    <header id="header" style="background-image: url(/static/images/9.jpg);height: auto;background-attachment: fixed;">
+        <div class="header-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-container">
+                            <form method="post">
+	<center>
+
+
+
+
+
+
+
+
+<form method="post">
+
+	<center>
+
+
+		{%if data['upveh']%}
+
+
+
+		<h1  style="color: white; background-color: black;">UPDATE CONTROL ROOM VEHICLE</h1>
+		<table class="table" style="width: 700px;">
+			<tr>
+				<th>Vehicle number</th>
+				<td><input type="text" required="" pattern="[A-Z/s0-9]{0-30}" title="enter valid vehicle number" class="form-control" name="vnum" value="{{ data['upveh'][0]['vehicle_number'] }}"></td>
+			</tr>
+			<tr>
+				<th>Chasis number</th>
+				<td><input type="text"  required="" class="form-control" name="cnum" value="{{ data['upveh'][0]['chasis_number'] }}"></td>
+			</tr>
+			<tr>
+				<th>Engine number</th>
+				<td><input type="text" required="" class="form-control" name="enum" value="{{ data['upveh'][0]['engine_number'] }}"></td>
+			</tr>
+			<tr>
+				<th>Year of manufacture</th>
+				<td><input type="text"  required="" class="form-control" name="yom" value="{{ data['upveh'][0]['year_of_manufacture'] }}"></td>
+			</tr>
+			<tr>
+				<th>Company</th>
+				<td><input type="text" required="" class="form-control" name="company" value="{{ data['upveh'][0]['company'] }}"></td>
+			</tr>
+			<tr>
+				<th>Model</th>
+				<td><input type="text" required="" class="form-control" name="model" value="{{ data['upveh'][0]['model'] }}"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" name="submits" value="update" class="btn btn-success"></td>
+			</tr>
+		</table>
+
+
+		{% else %}
+
+
+
+
+		<h1  style="color: white; background-color: black;">ADD CONTROL ROOM VEHICLE</h1>
+		<table class="table" style="width: 700px;">
+			<tr>
+				<th>Vehicle number</th>
+				<td><input type="text" required="" class="form-control" name="vnum"></td>
+			</tr>
+			<tr>
+				<th>Chasis number</th>
+				<td><input type="text" required="" class="form-control" name="cnum"></td>
+			</tr>
+			<tr>
+				<th>Engine number</th>
+				<td><input type="text" required="" class="form-control" name="enum"></td>
+			</tr>
+			<tr>
+				<th>Year of manufacture</th>
+				<td><input type="text" required="" class="form-control" name="yom"></td>
+			</tr>
+			<tr>
+				<th>Company</th>
+				<td><input type="text" required="" class="form-control" name="company"></td>
+			</tr>
+			<tr>
+				<th>Model</th>
+				<td><input type="text" required="" class="form-control" name="model"></td>
+			</tr>
+			<tr>
+				<th>Username</th>
+				<td><input type="text" required="" class="form-control" name="uname"></td>
+			</tr>
+			<tr>
+				<th>Password</th>
+				<td><input type="password" required="" class="form-control" name="passw"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" name="submit" value="add" class="btn btn-success"></td>
+			</tr>
+		</table>
+
+		{% endif %}
+		
+		<br>
+		<br>
+		<h1 style="color: white; background-color: black;">VEHICLES</h1>
+		<table class="table" style="width: 700px;">
+			<tr>
+				<th>SNO</th>
+				<th>VEHICLE NUMBER</th>
+				<th>CHASIS NUMBER</th>
+				<th>ENGINE NUMBER</th>
+				<th>YEAR OF MANUFACTURE</th>
+				<th>COMPANY</th>
+				<th>MODEL</th>
+			</tr>
+
+			{% for row in data['vehicles'] %}
+
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ row['vehicle_number'] }}</td>
+				<td>{{ row['chasis_number'] }}</td>
+				<td>{{ row['engine_number'] }}</td>
+				<td>{{ row['year_of_manufacture'] }}</td>
+				<td>{{ row['company'] }}</td>
+				<td>{{ row['model'] }}</td>
+				<td><a href="?action=delete&vid={{ row['vehicle_id'] }}" class="btn btn-danger">delete</a></td>
+				<td><a href="?action=update&vid={{ row['vehicle_id'] }}" class="btn btn-success">update</a></td>
+			</tr>
+
+			{% endfor %}
+
+		</table>
+	</center>
+	
+</form>
+
+
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+
+
+
+
+
+
+                     </div>
+                    </div> <!-- end of col -->
+                </div> <!-- end of row -->
+            </div> <!-- end of container -->
+        </div> <!-- end of header-content -->
+    </header> <!-- end of header -->
+    <!-- end of header -->
+
+{% include 'footer.html' %}
+
+

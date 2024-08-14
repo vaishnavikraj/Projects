@@ -1,0 +1,54 @@
+{% include 'police_header.html' %}
+{% include 'police_temp_header.html' %}
+
+  <header id="header" style="background-image: url(/static/images/alert.jpg);height: auto;background-attachment: fixed;">
+        <div class="header-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-container">
+                            <form method="post" enctype="multipart/form-data">
+                            		<style type="text/css">
+                            		h1
+                            		{
+                            			color: white;
+                            			background-color: black;
+                            		}
+                            	
+                            	</style>
+
+
+
+<form enctype="multipart/form-data">
+
+<center>
+	<h1>CRIME RECORD</h1>
+	<table class="table">
+	<tr>
+		<th>Sno</th>
+		<th>Crime title</th>
+		<th>Crime description</th>
+		<th>File</th>
+		<th>date and time</th>
+	</tr>
+
+	{% for row in data['crime_records'] %}
+
+	<tr>
+		<th>{{ loop.index }}</th>
+		<td>{{ row['title'] }}</td>
+		<td>{{ row['description'] }}</td>
+		<td><img src="/{{ row['file'] }}" width="100" height="100"></td>
+		<td>{{ row['date_time'] }}</td>
+	</tr>
+
+	{% endfor %}
+
+
+	</table>
+</center>
+</form>
+
+{% include 'temp_footer.html' %}
+
+{% include 'footer.html' %}

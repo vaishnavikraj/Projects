@@ -1,0 +1,76 @@
+{% include 'police_header.html' %}
+{% include 'police_temp_header.html' %}
+
+  <header id="header" style="background-image: url(/static/images/alert.jpg);height: auto;background-attachment: fixed;">
+        <div class="header-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-container">
+                            <form method="post" enctype="multipart/form-data">
+                            	<style type="text/css">
+                            		h1
+                            		{
+                            			color: white;
+                            			background-color: black;
+                            		}
+                            	
+                            	</style>
+
+<center>
+	<h1>CONTROL ROOM VEHICLES</h1>
+	<table class="table">
+		<tr>
+			<th>SNO</th>
+			<th>VEHICLE NUMBER</th>
+			<th>CHASIS NUMBER</th>
+			<th>ENGINE NUMBER</th>
+			<th>YEAR OF MANUFACTURE</th>
+			<th>COMPANY</th>
+			<th>MODEL</th>
+		</tr>
+
+		{% for row in data['vehicles'] %}
+
+		<tr>
+			<td>{{ loop.index }}</td>
+			<td>{{ row['vehicle_number'] }}</td>
+			<td>{{ row['chasis_number'] }}</td>
+			<td>{{ row['engine_number'] }}</td>
+			<td>{{ row['year_of_manufacture'] }}</td>
+			<td>{{ row['company'] }}</td>
+			<td>{{ row['model'] }}</td>
+
+			{% if row['status']=='pending' %}
+
+			<td><a href="police_request_vehicle?vid={{ row['vehicle_id'] }}" class="btn btn-primary">request vehicle</a></td>
+
+			{% else %}
+
+			<td>{{ row['status'] }}</td>
+
+			{% endif %}
+			
+		</tr>
+
+		{% endfor %}
+
+	</table>
+</center>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+{% include 'temp_footer.html' %}
+
+{% include 'footer.html' %}

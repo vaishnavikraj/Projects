@@ -1,0 +1,77 @@
+{% include 'police_header.html' %}
+{% include 'police_temp_header.html' %}
+
+  <header id="header" style="background-image: url(/static/images/alert.jpg);height: auto;background-attachment: fixed;">
+        <div class="header-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-container">
+                            <form method="post" enctype="multipart/form-data">
+                            		<style type="text/css">
+                            		h1
+                            		{
+                            			color: white;
+                            			background-color: black;
+                            		}
+                            	
+                            	</style>
+
+
+<center>
+	<h1>CRIMINAL ALERT</h1>
+	<table class="table">
+		<tr>
+			<th>Sno</th>
+			<th>Criminal Name</th>
+			<th>Photo</th>
+			<th>Found Place</th>
+			<th>Date</th>
+		</tr>
+
+		{% for row in data['criminal_alert'] %}
+
+		<tr>
+			<td>{{ loop.index }}</td>
+			<td>{{ row['criminal_name'] }}</td>
+			<td><img src="/{{ row['photo'] }}" width="100" height="100"></td>
+			<td>{{ row['found_place'] }}</td>
+			<td>{{ row['date_time'] }}</td>
+
+			{% if row['criminal_status']=='assigned' %}
+
+			<td><a href="?action=investigate&caid={{ row['criminal_alert_id'] }}&cid={{ row['criminal_id'] }}" class="btn btn-danger">arrest</a></td>
+
+			
+
+			{% else %}
+
+			<td>{{ row['criminal_status'] }}</td>
+
+			
+
+			{% endif %}
+
+
+		</tr>
+
+		{% endfor %}
+
+	</table>
+</center>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% include 'temp_footer.html' %}
+
+{% include 'footer.html' %}

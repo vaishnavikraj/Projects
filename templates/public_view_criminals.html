@@ -1,0 +1,82 @@
+{% include 'public_header.html' %}
+
+
+
+<style type="text/css">
+	th
+	{
+		background-color: grey;
+		color: white;
+	}
+	td
+	{
+		color: white;
+	}
+	tr:hover
+	{
+		background-color: black;
+	}
+</style>
+
+
+
+
+
+
+
+
+    <!-- Header -->
+    <header id="header" class="header" style="background-attachment: fixed;">
+        <div class="header-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-container">
+                         
+							<form enctype="multipart/form-data">
+
+							<center>
+								<h1>MOST WANTED CRIMINALS</h1>
+								<table class="table" width="600">
+									<tr>
+										<th>S.NO</th>
+										<th>FIRST NAME</th>
+										<th>LAST NAME</th>
+										
+										<th>AGE</th>
+										<th>GENDER</th>
+										<th>PHOTO</th>
+
+									</tr>
+
+									{% for row in data['criminals'] %}
+
+									<tr>
+										<td>{{ loop.index }}</td>
+										<td>{{ row['first_name'] }}</td>
+										<td>{{ row['last_name'] }}</td>
+										
+										<td>{{ row['age'] }}</td>
+										<td>{{ row['gender'] }}</td>
+										<td><img src="/{{ row['photo'] }}" width="100" height="100"></td>
+									</tr>
+
+									{% endfor %}
+									
+								</table>
+							</center>
+
+							</form>
+
+
+<!--                         </div>
+ -->                    </div> <!-- end of col -->
+                </div> <!-- end of row -->
+            </div> <!-- end of container -->
+        </div> <!-- end of header-content -->
+    </header> <!-- end of header -->
+    <!-- end of header -->
+
+
+
+{% include 'footer.html' %}

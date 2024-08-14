@@ -1,0 +1,111 @@
+
+{% include 'admin_header.html' %}
+
+<style type="text/css">
+	th
+	{
+		background-color: black;
+		color: white;
+	}
+	td
+	{
+
+		color: white;
+	}
+	h1{
+
+		margin-top: 150px;	
+	}
+	tr:hover
+	{
+		opacity: 0.3;
+		background-color: grey;
+	}
+	table
+	{
+		opacity: 0.9;
+		background-color: black;
+	}
+
+</style>
+
+
+ <!-- Header -->
+    <header id="header" style="background-image: url(/static/images/21.jpg);height: auto;background-attachment: fixed;">
+        <div class="header-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-container">
+                            <form method="post">
+	<center>
+
+<center>
+	<h1 style="color: white; background-color: black;">VEHICLE LOCATIONS</h1>
+	<table class="table">
+		<tr>
+			<th>S NO</th>
+
+			<th>VEHICLE NUMBER</th>
+		
+			<th>COMPANY</th>
+		
+			<th>MODEL</th>
+		
+			<th>TRACK</th>
+		
+		
+		
+			<th>DATE & TIME</th>
+		</tr>
+
+		{% for row in data['vehicle_locations'] %}
+
+		<tr>
+			<td>{{ loop.index }}</td>
+			<td>{{ row['vehicle_number'] }}</td>
+			<td>{{ row['company'] }}</td>
+			<td>{{ row['model'] }}</td>
+			<td><a class="btn btn-primary" href="http://www.google.com/maps?q={{ row['latitude'] }},{{ row['longitude'] }}">Track Vehicle</a></td>
+			
+			<td>{{ row['date_time'] }}</td>
+		</tr>
+
+		{% endfor %}
+		
+	</table>
+</center>
+
+
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+
+
+
+
+
+
+                     </div>
+                    </div> <!-- end of col -->
+                </div> <!-- end of row -->
+            </div> <!-- end of container -->
+        </div> <!-- end of header-content -->
+    </header> <!-- end of header -->
+    <!-- end of header -->
+
+{% include 'footer.html' %}
+
+

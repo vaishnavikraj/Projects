@@ -1,0 +1,178 @@
+{% include 'admin_header.html' %}
+
+
+
+<style type="text/css">
+	th
+	{
+		background-color: grey;
+		color: black;
+	}
+	td
+	{
+		color: black;
+	}
+	h1{
+
+		margin-top: 150px;	
+	}
+	tr:hover
+	{
+		background-color: #2B3856;
+	}
+	table
+	{
+		background-color: #354260 ;
+	}
+</style>
+
+
+ <!-- Header -->
+    <header id="header" style="background-image: url(/static/images/7.jpg);height: auto;background-attachment: fixed;">
+        <div class="header-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-container">
+                            <form method="post">
+	<center>
+
+		{% if data['upauthorities'] %}
+
+
+		<h1>UPDATE AUTHORITIES</h1>
+		<table class="table" style="width: 500px;">
+			<tr>
+				<th>Authority name</th>
+				<td><input type="text" required="" pattern="[a-zA-Z ]+$" title="enter valid name" name="aname" value="{{ data['upauthorities'][0]['authority_name'] }}" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>Place</th>
+				<td><input type="text" name="place" pattern="[a-zA-Z/s]{0-30}" title="enter valid place name" required="" class="form-control" value="{{ data['upauthorities'][0]['place'] }}"></td>
+			</tr>
+			<tr>
+				<th>Landmark</th>
+				<td><input type="text" name="lmark" pattern="[a-zA-Z/s]{0-30}" title="enter valid landmark" class="form-control" required="" value="{{ data['upauthorities'][0]['landmark'] }}"></td>
+			</tr>
+			<tr>
+				<th>Pincode</th>
+				<td><input type="text" required="" pattern="[0-9/s]{6}" title="enter valid pincode" class="form-control" name="pin" value="{{ data['upauthorities'][0]['pincode'] }}"></td>
+			</tr>
+			<tr>
+				<th>Phone</th>
+				<td><input type="text" required="" pattern="[0-9]{10}" title="enter valid phone number" class="form-control" name="phone" value="{{ data['upauthorities'][0]['phone'] }}"></td>
+			</tr>
+			<tr>
+				<th>Email</th>
+				<td><input type="email" required="" class="form-control" name="email" pattern=".+@gmail\.com" value="{{ data['upauthorities'][0]['email'] }}"></td>
+			</tr>
+
+			<tr>
+				<td colspan="2" align="center"><input type="submit" class="btn btn-warning" name="submits" value="update"></td>
+			</tr>
+		
+		</table>
+
+
+
+		{% else %}
+
+
+
+		<h1>MANAGE AUTHORITIES</h1>
+		<table class="table" style="width: 500px;">
+			<tr>
+				<th>Authority name</th>
+				<td><input type="text" class="form-control" pattern="[a-zA-Z/s]{0-30}" title="enter valid name" required="" name="aname"></td>
+			</tr>
+			<tr>
+				<th>Place</th>
+				<td><input type="text" pattern="[a-zA-Z/s]{0-30}" title="enter valid place name" class="form-control" name="place" required=""></td>
+			</tr>
+			<tr>
+				<th>Landmark</th>
+				<td><input type="text" pattern="[a-zA-Z/s]{0-30}" title="enter valid landmark" class="form-control" name="lmark" required=""></td>
+			</tr>
+			<tr>
+				<th>Pincode</th>
+				<td><input type="text" pattern="[0-9/s]{6}" title="enter valid pincode"  class="form-control" required="" name="pin"></td>
+			</tr>
+			<tr>
+				<th>Phone</th>
+				<td><input type="text" pattern="[0-9]{10}" title="enter valid phone number"  class="form-control" required="" name="phone"></td>
+			</tr>
+			<tr>
+				<th>Email</th>
+				<td><input type="email" class="form-control" required="" name="email" pattern=".+@gmail\.com"></td>
+			</tr>
+			<tr>
+				<th>Username</th>
+				<td><input type="text" pattern="[a-zA-Z/s0-9]{0-50}" title="enter valid name"  class="form-control" name="uname" required=""></td>
+			</tr>
+			<tr>
+				<th>Password</th>
+				<td><input type="Password" class="form-control" name="pword" required=""></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit" class="btn btn-success" name="submit" value="register"></td>
+			</tr>
+		</table>
+
+		{% endif %}
+
+
+		<center>
+		<h1>VIEW AUTHORITIES</h1>
+		<table class="table" style="width: 800px;">
+			<tr>
+				<th>S.NO</th>
+				<th>AUTHORITY NAME</th>
+				<th>PLACE</th>
+				<th>LANDMARK</th>
+				<th>PINCODE</th>
+				<th>PHONE</th>
+				<th>EMAIL</th>
+			</tr>
+
+			{% for row in data['authorities'] %}
+
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ row['authority_name'] }}</td>
+				<td>{{ row['place'] }}</td>
+				<td>{{ row['landmark'] }}</td>
+				<td>{{ row['pincode'] }}</td>
+				<td>{{ row['phone'] }}</td>
+				<td>{{ row['email'] }}</td>
+				<td><a href="?action=delete&aid={{ row['authority_id'] }}&lid={{ row['login_id'] }}" class="btn btn-danger">delete</a></td>
+				<td><a href="?action=update&aid={{ row['authority_id'] }}&lid={{ row['login_id'] }}" class="btn btn-warning">update</a></td>
+
+			</tr>
+
+			{% endfor %}
+
+		</table>
+	</center>
+	
+</form>
+
+<br>
+<br>
+<br>
+
+
+
+
+
+
+                     </div>
+                    </div> <!-- end of col -->
+                </div> <!-- end of row -->
+            </div> <!-- end of container -->
+        </div> <!-- end of header-content -->
+    </header> <!-- end of header -->
+    <!-- end of header -->
+
+
+
+{% include 'footer.html' %}

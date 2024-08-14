@@ -1,0 +1,51 @@
+{% include 'authority_header.html' %}
+
+{% include 'temp_header.html' %}
+
+<center>
+	<h1 style="color: white; background-color: black;">USER COMPLAINTS</h1>
+	<table class="table">
+		<tr>
+			<th>SNO</th>
+			<th>USERNAME</th>
+			<th>USERTYPE</th>
+			<th>TITLE</th>
+			<th>DESCRIPTION</th>
+			<th>DATE</th>
+		</tr>
+
+		{% for row in data['complaints'] %}
+
+		<tr>
+			<td>{{ loop.index }}</td>
+			<td>{{ row['first_name'] }}</td>
+			<td>{{ row['usertype'] }}</td>
+			<td>{{ row['title'] }}</td>
+			<td>{{ row['description'] }}</td>
+			<td>{{ row['date_time'] }}</td>
+		</tr>
+
+		{% endfor %}
+		
+	</table>
+</center>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% include 'temp_footer.html' %}
+
+{% include 'footer.html' %}

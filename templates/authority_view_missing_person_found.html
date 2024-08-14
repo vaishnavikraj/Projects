@@ -1,0 +1,56 @@
+{% include 'authority_header.html' %}
+
+{% include 'temp_header.html' %}
+
+<center>
+	<h1 style="color: white; background-color: black;">MISSING PERSON FOUND</h1>
+	<table class="table">
+		<tr>
+			<th>SNO</th>
+			<th>MISSING PERSON</th>
+			<th>PLACE</th>
+			<th>DETAILS</th>
+			<th>DATE</th>
+		</tr>
+
+		{% for row in data['missingfound'] %}
+
+		<tr>
+			<td>{{ loop.index }}</td>
+			<td>{{ row['first_name'] }}</td>
+			<td>{{  row['found_place'] }}</td>
+			<td>{{  row['details'] }}</td>
+			<td>{{ row['date_time'] }}</td>
+
+			{% if row['status']=='missing' %}
+
+			<td><a href="?action=update&mid={{ row['missing_person_id'] }}">found</a></td>
+
+			{% else %}
+
+			<td>{{ row['status'] }}</td>
+
+			{% endif %}
+
+		</tr>
+
+		{% endfor %}
+		
+	</table>
+</center>
+<br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br>
+
+{% include 'temp_footer.html' %}
+
+
+{% include 'footer.html' %}

@@ -1,0 +1,54 @@
+
+                       
+        
+
+    <!-- Copyright -->
+    <div class="copyright" style="position: relative;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="p-small">Copyright © 2020 <a href="https://inovatik.com">by A G</a></p>
+                </div> <!-- end of col -->
+            </div> <!-- enf of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of copyright --> 
+    <!-- end of copyright -->
+    
+    	
+    <!-- Scripts -->
+    <script src="/static/js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="/static/js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
+    <script src="/static/js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+    <script src="/static/js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
+    <script src="/static/js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+    <script src="/static/js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
+    <script src="/static/js/morphext.min.js"></script> <!-- Morphtext rotating text in the header -->
+    <script src="/static/js/isotope.pkgd.min.js"></script> <!-- Isotope for filter -->
+    <script src="/static/js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
+    <script src="/static/js/scripts.js"></script> <!-- Custom scripts -->
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul class="flashes">
+    {% for message in messages %}
+    <script type="text/javascript">alert("{{message}}")</script>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
